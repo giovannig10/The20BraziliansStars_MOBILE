@@ -33,7 +33,7 @@ export default function Layout(){
             options={{
                 title: "Logar",
                 tabBarIcon: ({ color, size }) => (
-                    <Ionicons name="logar" color={color} size={size} />
+                    <Ionicons name="person-outline" color={color} size={size} />
                 ),
             }}
             />
