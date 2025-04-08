@@ -65,6 +65,8 @@ import {
           />
         </View>
       </ScrollView>
+
+      
     );
   }
 
@@ -74,7 +76,7 @@ import {
       backgroundColor: "#F5F5F5",
       alignItems: "center",
       paddingHorizontal: 20,
-      paddingBottom: 20, // Adiciona um espaço no final para evitar cortes
+      paddingBottom: 20, 
     },
     main: {
       flexDirection: "row",
@@ -148,8 +150,8 @@ import {
     webview: {
       flex: 1,
       width: "100%",
-      minHeight: 600, // Garante que o WebView tenha uma altura mínima
-      maxHeight: 800, // Ajuste a altura máxima conforme necessário
+      minHeight: 600, 
+      maxHeight: 800,
     },
   });
   

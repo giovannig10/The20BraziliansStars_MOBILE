@@ -124,7 +124,6 @@ const styles = StyleSheet.create({
   },
 
   card1: {
-    backgroundColor: '#C1C1C1',
     borderRadius: 10,
     width: 350,
   }
