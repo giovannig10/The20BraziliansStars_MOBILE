@@ -1,44 +1,32 @@
-import { Tabs } from "expo-router";
+import React from 'react';
+import { Drawer } from "expo-router/drawer";
 import { Ionicons } from "@expo/vector-icons";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 
 export default function Layout() {
     return (
-        <Tabs
-            screenOptions={{
-                tabBarActiveTintColor: "#007AFF",
-                tabBarInactiveTintColor: "#8E8E93",
-                tabBarStyle: {
-                    backgroundColor: "#FFFFFF",
-                    borderTopColor: "#E0E0E0",
-                    borderTopWidth: 1,
-                    height: 60,
-                },
-                tabBarLabelStyle: {
-                    fontSize: 12,
-                    marginBottom: 5,
-                },
-            }}
-        >
-            <Tabs.Screen
-                name="index"
-                options={{
-                    title: "Home",
-                    headerShown: false, 
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="home" color={color} size={size} />
-                    ),
-                }}
-            />
-            <Tabs.Screen
-                name="login"
-                options={{
-                    title: "Logar",
-                    headerShown: false,
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="person-outline" color={color} size={size} />
-                    ),
-                }}
-            />
-        </Tabs>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+            <Drawer>
+                <Drawer.Screen name="index"
+                    options={{
+                        title: "",
+                        drawerLabel: "Home",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="home" size={size} color={color} />
+                        ),
+                    }}
+                />
+                <Drawer.Screen name="login"
+                    options={{
+                        title: "",
+                        drawerLabel: "Login",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                    }}
+                />
+            </Drawer>
+        </GestureHandlerRootView>
     );
 }

@@ -36,7 +36,7 @@ const Login = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#D0D0D0',
+    backgroundColor: "#F5F5F5",
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
