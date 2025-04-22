@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     marginBottom: 70,
   },
   cardTeamContainer: {
-    width: 500, // Reduza de 600 para um valor menor
+    width: 330, 
     height: '100%',
     borderRadius: 12,
     overflow: 'hidden',
