@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, StatusBar, Alert } from 'react-native';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, StatusBar, Alert, Modal } from 'react-native';
 import { router } from 'expo-router';
+import { AntDesign } from '@expo/vector-icons'; // Importando pacote de ícones
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleLogin = () => {
-    // Validação básica
     if (email && password) {
       console.log('Usuário logado:', email);
       
-      router.replace('/');
+      // Mostrar modal de sucesso
+      setShowSuccessModal(true);
+      
+      // Redirecionar após um breve delay para permitir que o usuário veja a confirmação
+      setTimeout(() => {
+        setShowSuccessModal(false);
+        router.replace('/');
+      }, 2000);
     } else {
-      // Mostra alerta se campos estiverem vazios
       Alert.alert(
         "Dados incompletos",
         "Por favor, preencha email e senha para continuar.",
@@ -88,6 +95,21 @@ const Login = () => {
           </TouchableOpacity>
         </View>
       </View>
+
+      {/* Modal de login realizado com sucesso usando ícone */}
+      <Modal
+        transparent={true}
+        visible={showSuccessModal}
+        animationType="fade"
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            {/* Usando ícone em vez de imagem */}
+            <AntDesign name="checkcircle" size={80} color="#4CAF50" />
+            <Text style={styles.successText}>Login Realizado com Sucesso!</Text>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -184,6 +206,29 @@ const styles = StyleSheet.create({
   card1: {
     borderRadius: 10,
     width: 350,
+  },
+  
+  // Estilos para o modal de sucesso
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+    alignItems: 'center',
+    elevation: 5,
+    width: '80%',
+  },
+  successText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#25406A',
+    textAlign: 'center',
+    marginTop: 15,
   }
 });
 
