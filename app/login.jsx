@@ -1,7 +1,43 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TextInput,  TouchableOpacity, StatusBar } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, StatusBar, Alert } from 'react-native';
+import { router } from 'expo-router';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    // Validação básica
+    if (email && password) {
+      console.log('Usuário logado:', email);
+      
+      router.replace('/');
+    } else {
+      // Mostra alerta se campos estiverem vazios
+      Alert.alert(
+        "Dados incompletos",
+        "Por favor, preencha email e senha para continuar.",
+        [{ text: "OK" }]
+      );
+    }
+  };
+
+  const handleForgotPassword = () => {
+    Alert.alert(
+      "Recuperação de Senha",
+      "Um email de recuperação será enviado para você.",
+      [{ text: "OK" }]
+    );
+  };
+
+  const handleSocialLogin = (provider) => {
+    Alert.alert(
+      "Login Social",
+      `Login com ${provider} será implementado em breve.`,
+      [{ text: "OK" }]
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Image source={require('../assets/img/Logo.png')} style={styles.logo} />
@@ -10,29 +46,52 @@ const Login = () => {
       <Text style={styles.title}>THE 20 BRAZILIAN STARS</Text>
       <StatusBar style="auto" />
 
-<View style={styles.card1}>
-      <View style={styles.inputs}>
-        <TextInput style={styles.text} placeholder='Email:' placeholderTextColor="#9A9999" />
-        <TextInput style={styles.text} placeholder='Senha:' placeholderTextColor="#9A9999" secureTextEntry />
-      </View>
+      <View style={styles.card1}>
+        <View style={styles.inputs}>
+          <TextInput
+            style={styles.text}
+            placeholder='Email:'
+            placeholderTextColor="#9A9999"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <TextInput
+            style={styles.text}
+            placeholder='Senha:'
+            placeholderTextColor="#9A9999"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+          />
+        </View>
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} >
-          <Text style={styles.placeholder}>ENTRAR</Text>
-        </TouchableOpacity>
-        <Text style={styles.forgotPassword}>ESQUECEU A SENHA?</Text>
-      </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            <Text style={styles.placeholder}>ENTRAR</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleForgotPassword}>
+            <Text style={styles.forgotPassword}>ESQUECEU A SENHA?</Text>
+          </TouchableOpacity>
+        </View>
 
-      <View style={styles.logos}>
-      <Image source={require('../assets/img/googleLogo.png')} style={styles.image} />
-      <Image source={require('../assets/img/facebookLogo.png')} style={styles.image}/>
-      <Image source={require('../assets/img/appleLogo.png')} style={styles.image}/>
+        <View style={styles.logos}>
+          <TouchableOpacity onPress={() => handleSocialLogin('Google')}>
+            <Image source={require('../assets/img/googleLogo.png')} style={styles.image} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleSocialLogin('Facebook')}>
+            <Image source={require('../assets/img/facebookLogo.png')} style={styles.image}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleSocialLogin('Apple')}>
+            <Image source={require('../assets/img/appleLogo.png')} style={styles.image}/>
+          </TouchableOpacity>
+        </View>
       </View>
-</View>
-</View>
-
+    </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -40,7 +99,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
-
   },
   button: {
     width: 171,
