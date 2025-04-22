@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, StatusBar, Alert, Modal } from 'react-native';
 import { router } from 'expo-router';
-import { AntDesign } from '@expo/vector-icons'; // Importando pacote de ícones
+import { AntDesign } from '@expo/vector-icons'; 
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,10 +12,8 @@ const Login = () => {
     if (email && password) {
       console.log('Usuário logado:', email);
       
-      // Mostrar modal de sucesso
       setShowSuccessModal(true);
       
-      // Redirecionar após um breve delay para permitir que o usuário veja a confirmação
       setTimeout(() => {
         setShowSuccessModal(false);
         router.replace('/');
@@ -96,7 +94,6 @@ const Login = () => {
         </View>
       </View>
 
-      {/* Modal de login realizado com sucesso usando ícone */}
       <Modal
         transparent={true}
         visible={showSuccessModal}
@@ -104,7 +101,6 @@ const Login = () => {
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            {/* Usando ícone em vez de imagem */}
             <AntDesign name="checkcircle" size={80} color="#4CAF50" />
             <Text style={styles.successText}>Login Realizado com Sucesso!</Text>
           </View>
@@ -208,7 +204,6 @@ const styles = StyleSheet.create({
     width: 350,
   },
   
-  // Estilos para o modal de sucesso
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
