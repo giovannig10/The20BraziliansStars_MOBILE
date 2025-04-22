@@ -7,10 +7,19 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 export default function Layout() {
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-            <Drawer>
+            <Drawer
+                screenOptions={{
+                    headerStyle: {
+                        backgroundColor: "#25406A",
+                    },
+                    headerTintColor: "#FFFFFF",
+                    headerTitle: "",
+                    drawerActiveTintColor: "#25406A",
+                }}
+            >
                 <Drawer.Screen name="index"
                     options={{
-                        title: "",
+                        headerTitle: "",
                         drawerLabel: "Home",
                         drawerIcon: ({ size, color }) => (
                             <Ionicons name="home" size={size} color={color} />
@@ -19,7 +28,7 @@ export default function Layout() {
                 />
                 <Drawer.Screen name="login"
                     options={{
-                        title: "",
+                        headerTitle: "", 
                         drawerLabel: "Login",
                         drawerIcon: ({ size, color }) => (
                             <Ionicons name="person" size={size} color={color} />
