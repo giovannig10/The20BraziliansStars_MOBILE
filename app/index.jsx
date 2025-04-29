@@ -19,7 +19,7 @@ import {
             </Text>
           </View>
           <View style={styles.logoContainer}>
-            <Image source={require("../assets/img/Logo.png")} style={styles.logo} />
+            <Image source={require("../assets/img/logos/Logo.png")} style={styles.logo} />
             <View style={styles.bar}></View>
             <Text style={styles.title}>THE BRAZILIAN STARS</Text>
           </View>

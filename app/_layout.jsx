@@ -44,6 +44,15 @@ export default function Layout() {
                         ),
                     }}
                 />
+                <Drawer.Screen name="profile"
+                    options={{
+                        headerTitle: "", 
+                        drawerLabel: "Perfil",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                    }}
+                />
             </Drawer>
         </GestureHandlerRootView>
     );

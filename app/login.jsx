@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/img/Logo.png')} style={styles.logo} />
+      <Image source={require('../assets/img/logos/Logo.png')} style={styles.logo} />
       <View style={styles.bar}></View>
       
       <Text style={styles.title}>THE 20 BRAZILIAN STARS</Text>
@@ -83,13 +83,13 @@ const Login = () => {
 
         <View style={styles.logos}>
           <TouchableOpacity onPress={() => handleSocialLogin('Google')}>
-            <Image source={require('../assets/img/googleLogo.png')} style={styles.image} />
+            <Image source={require('../assets/img/logos/googleLogo.png')} style={styles.image} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleSocialLogin('Facebook')}>
-            <Image source={require('../assets/img/facebookLogo.png')} style={styles.image}/>
+            <Image source={require('../assets/img/logos/facebookLogo.png')} style={styles.image}/>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleSocialLogin('Apple')}>
-            <Image source={require('../assets/img/appleLogo.png')} style={styles.image}/>
+            <Image source={require('../assets/img/logos/appleLogo.png')} style={styles.image}/>
           </TouchableOpacity>
         </View>
       </View>
