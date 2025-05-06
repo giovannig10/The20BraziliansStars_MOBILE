@@ -31,7 +31,7 @@ export default function Layout() {
                         headerTitle: "", 
                         drawerLabel: "Login",
                         drawerIcon: ({ size, color }) => (
-                            <Ionicons name="person" size={size} color={color} />
+                            <Ionicons name="person-add-outline" size={size} color={color} />
                         ),
                     }}
                 />
