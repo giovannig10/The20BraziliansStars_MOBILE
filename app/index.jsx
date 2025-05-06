@@ -65,8 +65,6 @@ import {
           />
         </View>
       </ScrollView>
-
-      
     );
   }
 

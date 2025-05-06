@@ -53,6 +53,15 @@ export default function Layout() {
                         ),
                     }}
                 />
+                 <Drawer.Screen name="contact"
+                    options={{
+                        headerTitle: "", 
+                        drawerLabel: "Contato",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                    }}
+                />
             </Drawer>
         </GestureHandlerRootView>
     );
