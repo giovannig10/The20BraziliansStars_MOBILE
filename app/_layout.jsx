@@ -64,6 +64,17 @@ export default function Layout() {
                         drawerItemStyle: { display: 'none' },
                     }}
                 />
+                <Drawer.Screen name="developers"
+                    options={{
+                        headerShown: false,
+                        headerTitle: "", 
+                        drawerLabel: "Membros",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                        drawerItemStyle: { display: 'none' },
+                    }}
+                />
             </Drawer>
         </GestureHandlerRootView>
     );
