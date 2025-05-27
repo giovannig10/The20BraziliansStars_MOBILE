@@ -171,7 +171,7 @@ export default function Profile() {
                   <TouchableOpacity style={styles.linkItem}>
                     <View style={styles.settingLeft}>
                       <Ionicons
-                        name="help-circle-outline"
+                        name="share-social-outline"
                         size={22}
                         color="#1A2F5A"
                       />
@@ -181,18 +181,20 @@ export default function Profile() {
                   </TouchableOpacity>
                 </Link>
 
-                {/* Alternativa seria:
-                                <TouchableOpacity 
-                                    style={styles.linkItem} 
-                                    onPress={() => router.push('/contact')}
-                                >
-                                    <View style={styles.settingLeft}>
-                                        <Ionicons name="help-circle-outline" size={22} color="#1A2F5A" />
-                                        <Text style={styles.settingText}>Ajuda e suporte</Text>
-                                    </View>
-                                    <Ionicons name="chevron-forward" size={18} color="#999" />
-                                </TouchableOpacity>
-                                */}
+                <Link href="/developers" asChild>
+                  <TouchableOpacity style={styles.linkItem}>
+                    <View style={styles.settingLeft}>
+                      <Ionicons
+                        name="people-circle-outline"
+                        size={22}
+                        color="#1A2F5A"
+                      />
+                      <Text style={styles.settingText}>Conheça nossa Equipe</Text>
+                    </View>
+                    <Ionicons name="chevron-forward" size={18} color="#999" />
+                  </TouchableOpacity>
+                </Link>
+                
               </View>
             </View>
           </View>
