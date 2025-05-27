@@ -1,38 +1,115 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TextInput,  TouchableOpacity, StatusBar } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, StatusBar, Alert, Modal } from 'react-native';
+import { router } from 'expo-router';
+import { AntDesign } from '@expo/vector-icons'; 
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const handleLogin = () => {
+    if (email && password) {
+      console.log('Usuário logado:', email);
+      
+      setShowSuccessModal(true);
+      
+      setTimeout(() => {
+        setShowSuccessModal(false);
+        router.replace('/');
+      }, 2000);
+    } else {
+      Alert.alert(
+        "Dados incompletos",
+        "Por favor, preencha email e senha para continuar.",
+        [{ text: "OK" }]
+      );
+    }
+  };
+
+  const handleForgotPassword = () => {
+    Alert.alert(
+      "Recuperação de Senha",
+      "Um email de recuperação será enviado para você.",
+      [{ text: "OK" }]
+    );
+  };
+
+  const handleSocialLogin = (provider) => {
+    Alert.alert(
+      "Login Social",
+      `Login com ${provider} será implementado em breve.`,
+      [{ text: "OK" }]
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/img/Logo.png')} style={styles.logo} />
+      <Image source={require('../assets/img/logos/Logo.png')} style={styles.logo} />
       <View style={styles.bar}></View>
       
       <Text style={styles.title}>THE 20 BRAZILIAN STARS</Text>
       <StatusBar style="auto" />
 
-<View style={styles.card1}>
-      <View style={styles.inputs}>
-        <TextInput style={styles.text} placeholder='Email:' placeholderTextColor="#9A9999" />
-        <TextInput style={styles.text} placeholder='Senha:' placeholderTextColor="#9A9999" secureTextEntry />
+      <View style={styles.card1}>
+        <View style={styles.inputs}>
+          <TextInput
+            style={styles.text}
+            placeholder='Email:'
+            placeholderTextColor="#9A9999"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <TextInput
+            style={styles.text}
+            placeholder='Senha:'
+            placeholderTextColor="#9A9999"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+          />
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            <Text style={styles.placeholder}>ENTRAR</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleForgotPassword}>
+            <Text style={styles.forgotPassword}>ESQUECEU A SENHA?</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.logos}>
+          <TouchableOpacity onPress={() => handleSocialLogin('Google')}>
+            <Image source={require('../assets/img/logos/googleLogo.png')} style={styles.image} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleSocialLogin('Facebook')}>
+            <Image source={require('../assets/img/logos/facebookLogo.png')} style={styles.image}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleSocialLogin('Apple')}>
+            <Image source={require('../assets/img/logos/appleLogo.png')} style={styles.image}/>
+          </TouchableOpacity>
+        </View>
       </View>
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} >
-          <Text style={styles.placeholder}>ENTRAR</Text>
-        </TouchableOpacity>
-        <Text style={styles.forgotPassword}>ESQUECEU A SENHA?</Text>
-      </View>
-
-      <View style={styles.logos}>
-      <Image source={require('../assets/img/googleLogo.png')} style={styles.image} />
-      <Image source={require('../assets/img/facebookLogo.png')} style={styles.image}/>
-      <Image source={require('../assets/img/appleLogo.png')} style={styles.image}/>
-      </View>
-</View>
-</View>
-
+      <Modal
+        transparent={true}
+        visible={showSuccessModal}
+        animationType="fade"
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <AntDesign name="checkcircle" size={80} color="#4CAF50" />
+            <Text style={styles.successText}>Login Realizado com Sucesso!</Text>
+          </View>
+        </View>
+      </Modal>
+    </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -40,7 +117,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
-
   },
   button: {
     width: 171,
@@ -126,6 +202,28 @@ const styles = StyleSheet.create({
   card1: {
     borderRadius: 10,
     width: 350,
+  },
+  
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+    alignItems: 'center',
+    elevation: 5,
+    width: '80%',
+  },
+  successText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#25406A',
+    textAlign: 'center',
+    marginTop: 15,
   }
 });
 

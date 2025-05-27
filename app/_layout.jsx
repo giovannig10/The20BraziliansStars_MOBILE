@@ -31,8 +31,48 @@ export default function Layout() {
                         headerTitle: "", 
                         drawerLabel: "Login",
                         drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person-add-outline" size={size} color={color} />
+                        ),
+                    }}
+                />
+                <Drawer.Screen name="time"
+                    options={{
+                        headerTitle: "", 
+                        drawerLabel: "Times",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="football" size={size} color={color} />
+                        ),
+                    }}
+                />
+                <Drawer.Screen name="profile"
+                    options={{
+                        headerTitle: "", 
+                        drawerLabel: "Perfil",
+                        drawerIcon: ({ size, color }) => (
                             <Ionicons name="person" size={size} color={color} />
                         ),
+                    }}
+                />
+                 <Drawer.Screen name="contact"
+                    options={{
+                        headerShown: false,
+                        headerTitle: "", 
+                        drawerLabel: "Contato",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                        drawerItemStyle: { display: 'none' },
+                    }}
+                />
+                <Drawer.Screen name="developers"
+                    options={{
+                        headerShown: false,
+                        headerTitle: "", 
+                        drawerLabel: "Membros",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                        drawerItemStyle: { display: 'none' },
                     }}
                 />
                 <Drawer.Screen name="botafogo"
