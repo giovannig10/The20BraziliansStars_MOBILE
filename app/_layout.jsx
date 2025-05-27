@@ -35,6 +35,15 @@ export default function Layout() {
                         ),
                     }}
                 />
+                <Drawer.Screen name="botafogo"
+                    options={{
+                        headerTitle: "", 
+                        drawerLabel: "Botafogo",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                    }}
+                />
             </Drawer>
         </GestureHandlerRootView>
     );
