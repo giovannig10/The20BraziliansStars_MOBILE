@@ -11,8 +11,16 @@ const TeamPage = () => {
         { id: 6, name: "Vitor Sampaio", role: "Membro Desenvolvedor", avatar: require('../assets/img/developers/vitor.person.jpeg') }
     ];
 
+    
+        
+    
     return (
         <ScrollView style={styles.container}>
+            <Text style={styles.title}>NOSSA EQUIPE</Text>
+            <Text style={styles.subtitle}>Composta por 6 grandes Devs!</Text>
+
+            <View style={styles.dividerLine} />
+
             <View style={styles.content}>
                 {teamMembers.map((member, index) => (
                     <View key={member.id} style={styles.card}>
@@ -31,12 +39,36 @@ const TeamPage = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#DBDCDD',
+        marginTop: 10,
     },
     content: {
         padding: 24,
         alignItems: 'center',
     },
+    title: {
+        fontSize: 24,
+    fontWeight: 'bold',
+    color: '#25406A',
+    textAlign: 'center',
+    letterSpacing: 1,
+    marginTop: 10,
+    },
+    subtitle: {
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: '#25406A',
+        textAlign: 'center',
+        marginBottom: 20,
+        letterSpacing: 1,
+    
+      },
+    dividerLine: {
+        height: 3,
+        backgroundColor: '#25406A',
+        marginHorizontal: 20,
+        marginBottom: 10,
+        borderRadius: 2,
+      },
     card: {
         flexDirection: 'row',
         alignItems: 'center',

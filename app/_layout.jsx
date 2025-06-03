@@ -66,7 +66,7 @@ export default function Layout() {
                 />
                 <Drawer.Screen name="developers"
                     options={{
-                        headerShown: false,
+                       
                         headerTitle: "", 
                         drawerLabel: "Membros",
                         drawerIcon: ({ size, color }) => (
