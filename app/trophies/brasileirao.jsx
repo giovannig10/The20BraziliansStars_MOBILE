@@ -17,36 +17,31 @@ const TrophyPage = ({ trophyName = "Brasileirão" }) => {
       id: 1,
       team: "Flamengo",
       year: "2020",
-      background: require("../../assets/img/backgrounds/torcida_flamengo.png"),
-      color: '#C8102E',
+      background: require("../../assets/img/background.trophy/brasileiro2020.webp"),
     },
     {
       id: 2,
       team: "Atlético Mineiro",
       year: "2021",
-      background: require("../../assets/img/backgrounds/torcida_galo.png"),
-      color: '#000000',
+      background: require("../../assets/img/background.trophy/brasileiro2021.jpg"),
     },
     {
       id: 3,
       team: "Palmeiras",
       year: "2022",
-      background: require("../../assets/img/backgrounds/torcida_palmeiras.png"),
-      color: '#004D28',
+      background: require("../../assets/img/background.trophy/brasileiro2022.webp"),
     },
     {
       id: 4,
       team: "Palmeiras",
       year: "2023",
-      background: require("../../assets/img/backgrounds/torcida_palmeiras.png"),
-      color: '#004D28',
+      background: require("../../assets/img/background.trophy/brasileiro2023.webp"),
     },
     {
       id: 5,
       team: "Botafogo",
       year: "2024",
-      background: require("../../assets/img/backgrounds/torcida_fogao.png"),
-      color: '#000000',
+      background: require("../../assets/img/background.trophy/brasileiro2024.jpg"),
     }
   ];
 
@@ -84,7 +79,7 @@ const TrophyPage = ({ trophyName = "Brasileirão" }) => {
             <Image
               source={champion.background}
               style={styles.championBackground}
-              blurRadius={3}
+              blurRadius={1}
             />
             <View style={[styles.championCard, { backgroundColor: champion.color }]}>
               <View style={styles.championContent}>
@@ -92,7 +87,7 @@ const TrophyPage = ({ trophyName = "Brasileirão" }) => {
                 <Text style={styles.championYear}>{champion.year}</Text>
               </View>
               <View style={styles.championIcon}>
-                <Ionicons name="trophy-outline" size={24} color="#FFD700" />
+                <Ionicons name="trophy-outline" size={30} color="#FFD700" />
               </View>
             </View>
           </View>
@@ -199,12 +194,12 @@ const styles = StyleSheet.create({
   championTeam: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#000000',
     marginBottom: 4,
   },
   championYear: {
     fontSize: 14,
-    color: '#F7FAFC',
+    color: '#000000',
     opacity: 0.9,
   },
   championLogo: {
