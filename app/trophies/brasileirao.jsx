@@ -13,41 +13,37 @@ const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 const TrophyPage = ({ trophyName = "Brasileirão" }) => {
   const champions = [
+
     {
       id: 1,
-      team: "Flamengo",
-      year: "2020",
-      background: require("../../assets/img/backgrounds/torcida_flamengo.png"),
-      color: '#C8102E',
+      team: "Botafogo",
+      year: "2024",
+      background: require("../../assets/img/background.trophy/brasileiro2024.webp"),
     },
     {
       id: 2,
-      team: "Atlético Mineiro",
-      year: "2021",
-      background: require("../../assets/img/backgrounds/torcida_galo.png"),
-      color: '#000000',
+      team: "Palmeiras",
+      year: "2023",
+      background: require("../../assets/img/background.trophy/brasileiro2023.webp"),
     },
     {
       id: 3,
       team: "Palmeiras",
       year: "2022",
-      background: require("../../assets/img/backgrounds/torcida_palmeiras.png"),
-      color: '#004D28',
+      background: require("../../assets/img/background.trophy/brasileiro2022.webp"),
     },
     {
       id: 4,
-      team: "Palmeiras",
-      year: "2023",
-      background: require("../../assets/img/backgrounds/torcida_palmeiras.png"),
-      color: '#004D28',
+      team: "Atlético Mineiro",
+      year: "2021",
+      background: require("../../assets/img/background.trophy/brasileiro2021.jpg"),
     },
     {
       id: 5,
-      team: "Botafogo",
-      year: "2024",
-      background: require("../../assets/img/backgrounds/torcida_fogao.png"),
-      color: '#000000',
-    }
+      team: "Flamengo",
+      year: "2020",
+      background: require("../../assets/img/background.trophy/brasileiro2020.webp"),
+    },
   ];
 
   return (
@@ -84,7 +80,7 @@ const TrophyPage = ({ trophyName = "Brasileirão" }) => {
             <Image
               source={champion.background}
               style={styles.championBackground}
-              blurRadius={3}
+              blurRadius={1}
             />
             <View style={[styles.championCard, { backgroundColor: champion.color }]}>
               <View style={styles.championContent}>
@@ -92,7 +88,7 @@ const TrophyPage = ({ trophyName = "Brasileirão" }) => {
                 <Text style={styles.championYear}>{champion.year}</Text>
               </View>
               <View style={styles.championIcon}>
-                <Ionicons name="trophy-outline" size={24} color="#FFD700" />
+                <Ionicons name="trophy-outline" size={30} color="#FFD700" />
               </View>
             </View>
           </View>
@@ -109,14 +105,14 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    paddingTop: 60,
+    paddingTop: 40,
     paddingBottom: 20,
-    paddingHorizontal: 20,
+
   },
   trophyTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#4A5568',
+    color: '#25406A',
     textAlign: 'center',
   },
   trophyIconContainer: {
@@ -131,13 +127,13 @@ const styles = StyleSheet.create({
   },
   dividerLine: {
     height: 4,
-    backgroundColor: '#2D3748',
+    backgroundColor: '#25406A',
     marginHorizontal: 30,
     marginBottom: 30,
     borderRadius: 2,
   },
   descriptionContainer: {
-    backgroundColor: '#2D3748',
+    backgroundColor: '#25406A',
     marginHorizontal: 20,
     padding: 20,
     borderRadius: 12,
@@ -156,7 +152,7 @@ const styles = StyleSheet.create({
   championsSectionTitle: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: '#2D3748',
+    color: '#25406A',
     textAlign: 'center',
     marginBottom: 20,
     letterSpacing: 1,
@@ -164,33 +160,20 @@ const styles = StyleSheet.create({
   championItem: {
     marginBottom: 12,
     position: 'relative',
-    height: 100,   // altura fixa para conter o background absoluto
+    height: 100,  
   },
   championBackground: {
     position: 'absolute',
     width: '100%',
-    height: '100%', // preencher todo container
-    borderRadius: 8,
-    opacity: 0.15,
-    top: 0,
-    left: 0,
+    height: '100%', 
+    borderRadius: 10,
+    opacity: 0.48,
   },
   championCard: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 16,
-    borderRadius: 8,
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    position: 'relative',
-    zIndex: 1,
     height: '100%',
   },
   championContent: {
@@ -199,12 +182,12 @@ const styles = StyleSheet.create({
   championTeam: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#000000',
     marginBottom: 4,
   },
   championYear: {
     fontSize: 14,
-    color: '#F7FAFC',
+    color: '#000000',
     opacity: 0.9,
   },
   championLogo: {
