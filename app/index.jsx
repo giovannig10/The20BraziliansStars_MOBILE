@@ -7,6 +7,7 @@ import {
     ScrollView,
   } from "react-native";
   import { WebView } from "react-native-webview";
+  import { Link } from "expo-router";
   
   export default function Home() {
     return (
@@ -26,9 +27,11 @@ import {
         </View>
   
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>
-            Conheça a história, o estádio, a torcida, o elenco e os títulos de cada clube
-          </Text>
+          <Link href="/time" asChild>
+            <Text style={styles.buttonText}>
+              Conheça a história, o estádio, a torcida, o elenco e os títulos de cada clube
+            </Text>
+          </Link>
           <Text style={styles.arrow}>▶</Text>
         </TouchableOpacity>
   

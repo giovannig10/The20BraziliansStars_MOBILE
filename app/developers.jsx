@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
 const TeamPage = () => {
+    const router = useRouter();
     const teamMembers = [
         { id: 1, name: "Giovanni Gonçalves", role: "Product Owner", avatar: require('../assets/img/developers/giovanni.person.jpeg') },
         { id: 2, name: "João Gianoni", role: "Scrum Master", avatar: require('../assets/img/developers/joao.person.jpeg') },
@@ -11,27 +14,63 @@ const TeamPage = () => {
         { id: 6, name: "Vitor Sampaio", role: "Membro Desenvolvedor", avatar: require('../assets/img/developers/vitor.person.jpeg') }
     ];
 
+    
     return (
-        <ScrollView style={styles.container}>
-            <View style={styles.content}>
-                {teamMembers.map((member, index) => (
-                    <View key={member.id} style={styles.card}>
-                        <Image source={member.avatar} style={styles.img} />
-                        <View style={styles.info}>
-                            <Text style={styles.name}>{member.name}</Text>
-                            <Text style={styles.role}>{member.role}</Text>
+        <View style={styles.mainContainer}>
+            {/* Botão de voltar */}
+            <TouchableOpacity 
+                style={styles.backButton} 
+                onPress={() => router.push("/profile")}
+            >
+                <Ionicons name="arrow-back" size={24} color="#1A2F5A" />
+            </TouchableOpacity>
+            
+            <ScrollView style={styles.container}>
+                <Text style={styles.championsSectionTitle}>CONHEÇA NOSSA EQUIPE</Text>
+                <Text style={styles.championsSectionSubtitle}>Somos 6 desenvolvedores e produtores de software, que trabalham juntos para criar o melhor site de futebol do Brasil.</Text>
+                <View style={styles.dividerLine} />
+                <View style={styles.content}>
+                    {teamMembers.map((member, index) => (
+                        <View key={member.id} style={styles.card}>
+                            <Image source={member.avatar} style={styles.img} />
+                            <View style={styles.info}>
+                                <Text style={styles.name}>{member.name}</Text>
+                                <Text style={styles.role}>{member.role}</Text>
+                            </View>
                         </View>
-                    </View>
-                ))}
-            </View>
-        </ScrollView>
+                    ))}
+                </View>
+            </ScrollView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    mainContainer: {
+        flex: 1,
+        backgroundColor: '#DBDCDD',
+    },
+    backButton: {
+        position: 'absolute',
+        top: 20,
+        left: 20,
+        zIndex: 10,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        width: 40,
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        elevation: 3,
+    },
     container: {
         flex: 1,
         backgroundColor: '#DBDCDD',
+        paddingTop: 60, // Espaço para o botão de voltar
     },
     content: {
         padding: 24,
@@ -58,6 +97,30 @@ const styles = StyleSheet.create({
     },
     info: {
         flex: 1,
+    },
+    championsSectionTitle: {
+        fontSize: 16,
+        marginTop: 10,
+        marginBottom: 10,
+        fontWeight: 'bold',
+        color: '#25406A',
+        textAlign: 'center',
+        letterSpacing: 1,
+    },
+    championsSectionSubtitle: {
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: '#25406A',
+        textAlign: 'center',
+        marginBottom: 20,
+        letterSpacing: 1,
+    },
+    dividerLine: {
+        height: 2,
+        backgroundColor: '#25406A',
+        marginHorizontal: 20,
+        marginBottom: 5,
+        borderRadius: 2,
     },
     name: {
         fontSize: 18,

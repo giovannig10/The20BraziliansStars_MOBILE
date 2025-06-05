@@ -84,6 +84,17 @@ export default function Layout() {
                         ),
                     }}
                 />
+                <Drawer.Screen name="favoriteTeam"
+                    options={{
+                        headerShown: false,
+                        headerTitle: "", 
+                        drawerLabel: "Time Favorito",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                        drawerItemStyle: { display: 'none' },
+                    }}
+                />
             </Drawer>
         </GestureHandlerRootView>
     );

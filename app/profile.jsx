@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function Profile() {
   const [user, setUser] = useState({
@@ -20,9 +22,8 @@ export default function Profile() {
     email: "joao.gianoni@gmail.com",
     favoriteTeam: "Corinthians",
   });
-
   const [darkModeEnabled, setDarkModeEnabled] = useState(false);
-
+  
   const teamShields = {
     Flamengo: require("../assets/img/shields/escudo_flamengo.png"),
     Corinthians: require("../assets/img/shields/escudo_corinthians.png"),
@@ -45,7 +46,7 @@ export default function Profile() {
     Bragantino: require("../assets/img/shields/escudo_bragantino.png"),
     Mirassol: require("../assets/img/shields/escudo_mirassol.png"),
   };
-
+  
   const backgroundImages = {
     Flamengo: require("../assets/img/backgrounds/torcida_flamengo.png"),
     Corinthians: require("../assets/img/backgrounds/torcida_corinthians.png"),
@@ -68,15 +69,40 @@ export default function Profile() {
     Bragantino: require("../assets/img/backgrounds/torcida_bragantino.png"),
     Mirassol: require("../assets/img/backgrounds/torcida_mirassol.png"),
   };
-
+  
+  // Carregar o time favorito quando a tela receber foco
+  useFocusEffect(
+    React.useCallback(() => {
+      const loadFavoriteTeam = async () => {
+        try {
+          const savedTeam = await AsyncStorage.getItem('@user_favorite_team');
+          if (savedTeam) {
+            const teamData = JSON.parse(savedTeam);
+            // Atualizar o time favorito no estado do usuário
+            setUser(prevUser => ({
+              ...prevUser,
+              favoriteTeam: teamData.name
+            }));
+            console.log("Time favorito carregado:", teamData.name);
+          }
+        } catch (error) {
+          console.error("Erro ao carregar time favorito:", error);
+        }
+      };
+      
+      loadFavoriteTeam();
+      return () => {};
+    }, [])
+  );
+  
   const getFavoriteTeamShield = () => {
-    return teamShields[user.favoriteTeam] || teamShields["default"];
+    return teamShields[user.favoriteTeam] || teamShields["Corinthians"];
   };
-
+  
   const getBackgroundImage = () => {
-    return backgroundImages[user.favoriteTeam] || backgroundImages["default"];
+    return backgroundImages[user.favoriteTeam] || backgroundImages["Corinthians"];
   };
-
+  
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView style={styles.scrollView}>
@@ -109,30 +135,30 @@ export default function Profile() {
                           </View>
                         )}
                       </View>
-
                       <Text style={styles.profileName}>{user.name}</Text>
                       <Text style={styles.profileUsername}>
                         {user.username}
                       </Text>
-
-                      <View style={styles.favoriteTeamBadge}>
-                        <Image
-                          source={getFavoriteTeamShield()}
-                          style={styles.teamShield}
-                          resizeMode="contain"
-                        />
-                        <Text style={styles.favoriteTeamText}>
-                          Time favorito: {user.favoriteTeam}
-                        </Text>
-                      </View>
+                      
+                      <Link href="/favoriteTeam" asChild>
+                        <TouchableOpacity style={styles.favoriteTeamBadge}>
+                          <Image
+                            source={getFavoriteTeamShield()}
+                            style={styles.teamShield}
+                            resizeMode="contain"
+                          />
+                          <Text style={styles.favoriteTeamText}>
+                            Time favorito: {user.favoriteTeam}
+                          </Text>
+                        </TouchableOpacity>
+                      </Link>
                     </View>
                   </ImageBackground>
                 </View>
               </View>
-
+              
               <View style={styles.settingsSection}>
                 <Text style={styles.sectionTitle}>Configurações</Text>
-
                 <View style={styles.settingItem}>
                   <View style={styles.settingLeft}>
                     <Ionicons name="moon-outline" size={22} color="#1A2F5A" />
@@ -145,28 +171,21 @@ export default function Profile() {
                     thumbColor={darkModeEnabled ? "#1A2F5A" : "#F4F4F4"}
                   />
                 </View>
-
-                <TouchableOpacity style={styles.linkItem}>
-                  <View style={styles.settingLeft}>
-                    <Ionicons name="person-outline" size={22} color="#1A2F5A" />
-                    <Text style={styles.settingText}>Editar perfil</Text>
-                  </View>
-                  <Ionicons name="chevron-forward" size={18} color="#999" />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.linkItem}>
-                  <View style={styles.settingLeft}>
-                    <Ionicons
-                      name="football-outline"
-                      size={22}
-                      color="#1A2F5A"
-                    />
-                    <Text style={styles.settingText}>Trocar time favorito</Text>
-                  </View>
-                  <Ionicons name="chevron-forward" size={18} color="#999" />
-                </TouchableOpacity>
-
-                {/* CORREÇÃO AQUI - Opção 1: Envolver o View em asChild */}
+                
+                <Link href="/favoriteTeam" asChild>
+                  <TouchableOpacity style={styles.linkItem}>
+                    <View style={styles.settingLeft}>
+                      <Ionicons
+                        name="football-outline"
+                        size={22}
+                        color="#1A2F5A"
+                      />
+                      <Text style={styles.settingText}>Trocar time favorito</Text>
+                    </View>
+                    <Ionicons name="chevron-forward" size={18} color="#999" />
+                  </TouchableOpacity>
+                </Link>
+                
                 <Link href="/contact" asChild>
                   <TouchableOpacity style={styles.linkItem}>
                     <View style={styles.settingLeft}>
@@ -180,7 +199,7 @@ export default function Profile() {
                     <Ionicons name="chevron-forward" size={18} color="#999" />
                   </TouchableOpacity>
                 </Link>
-
+                
                 <Link href="/developers" asChild>
                   <TouchableOpacity style={styles.linkItem}>
                     <View style={styles.settingLeft}>
@@ -233,7 +252,6 @@ const styles = StyleSheet.create({
   cardContent: {
     flex: 1,
   },
-
   headerContainer: {
     alignItems: "center",
     padding: 15,
@@ -244,43 +262,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: "hidden",
   },
-
-  settingsSection: {
-    padding: 15,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#1A2F5A",
-    marginBottom: 15,
-    marginTop: 20,
-  },
-  settingItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: "#EEEEEE",
-  },
-  settingLeft: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  settingText: {
-    fontSize: 15,
-    color: "#333",
-    marginLeft: 12,
-  },
-  linkItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: "#EEEEEE",
-  },
-
   headerBackground: {
     width: "100%",
     height: "100%",
@@ -339,9 +320,12 @@ const styles = StyleSheet.create({
     gap: 5,
     alignItems: "center",
     backgroundColor: "rgba(255,255,255,0.2)",
-    paddingVertical: 3,
-    paddingHorizontal: 8,
-    borderRadius: 12,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.4)',
+    activeOpacity: 0.7,
   },
   teamShield: {
     width: 30,
@@ -351,5 +335,40 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 11,
     fontWeight: "bold",
+  },
+  settingsSection: {
+    padding: 15,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#1A2F5A",
+    marginBottom: 15,
+    marginTop: 20,
+  },
+  settingItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: "#EEEEEE",
+  },
+  settingLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  settingText: {
+    fontSize: 15,
+    color: "#333",
+    marginLeft: 12,
+  },
+  linkItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: "#EEEEEE",
   },
 });
