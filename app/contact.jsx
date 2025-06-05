@@ -13,8 +13,12 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Contact() {
+    // Hook de navegação
+    const navigation = useNavigation();
+    
     // Estados para os campos do formulário
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -70,11 +74,20 @@ export default function Contact() {
             <StatusBar style="dark" />
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.header}>
-                    <Image
-                        source={require('../assets/img/logos/Logo.png')}
-                        style={styles.logo}
-                        resizeMode="contain"
-                    />
+                    <View style={styles.headerTop}>
+                        <TouchableOpacity 
+                            style={styles.backButton}
+                            onPress={() => navigation.navigate('profile')}
+                        >
+                            <Ionicons name="arrow-back" size={24} color="#FFF" />
+                        </TouchableOpacity>
+                        
+                        <Image
+                            source={require('../assets/img/logos/Logo.png')}
+                            style={styles.logo}
+                            resizeMode="contain"
+                        />
+                    </View>
                     <Text style={styles.headerTitle}>Fale Conosco</Text>
                     <Text style={styles.headerSubtitle}>
                         Dúvidas, sugestões ou feedback? Estamos aqui para ajudar.
@@ -125,6 +138,27 @@ export default function Contact() {
                             />
                         </View>
                         {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+                    </View>
+
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Assunto</Text>
+                        <View style={[styles.inputContainer, errors.subject && styles.inputError]}>
+                            <Ionicons name="create-outline" size={20} color="#666" style={styles.inputIcon} />
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Assunto da mensagem"
+                                value={subject}
+                                onChangeText={(text) => {
+                                    setSubject(text);
+                                    if (errors.subject) {
+                                        const newErrors = { ...errors };
+                                        delete newErrors.subject;
+                                        setErrors(newErrors);
+                                    }
+                                }}
+                            />
+                        </View>
+                        {errors.subject && <Text style={styles.errorText}>{errors.subject}</Text>}
                     </View>
 
                     <View style={styles.inputGroup}>
@@ -202,10 +236,22 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 3,
     },
+    headerTop: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        position: 'relative',
+        marginBottom: 10,
+        justifyContent: 'center',
+    },
+    backButton: {
+        position: 'absolute',
+        left: 0,
+        padding: 5,
+    },
     logo: {
         width: 70,
         height: 70,
-        marginBottom: 10,
     },
     headerTitle: {
         fontSize: 24,
