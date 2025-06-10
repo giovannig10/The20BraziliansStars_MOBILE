@@ -71,6 +71,51 @@ export default function Layout() {
                         ),
                     }}
                 />
+                <Drawer.Screen name="santos"
+                    options={{
+                        headerTitle: "", 
+                        drawerLabel: "Santos",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                    }}
+                />
+                <Drawer.Screen name="palmeiras"
+                    options={{
+                        headerTitle: "", 
+                        drawerLabel: "Palmeiras",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                    }}
+                />
+                <Drawer.Screen name="cruzeiro"
+                    options={{
+                        headerTitle: "", 
+                        drawerLabel: "Cruzeiro",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                    }}
+                />
+                <Drawer.Screen name="flamengo"
+                    options={{
+                        headerTitle: "", 
+                        drawerLabel: "Flamengo",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                    }}
+                />
+                <Drawer.Screen name="gremio"
+                    options={{
+                        headerTitle: "", 
+                        drawerLabel: "Grêmio",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person" size={size} color={color} />
+                        ),
+                    }}
+                />
                 <Drawer.Screen name="favoriteTeam"
                     options={{
                         headerShown: false,
