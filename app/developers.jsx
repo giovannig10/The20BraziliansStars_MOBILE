@@ -17,17 +17,10 @@ const TeamPage = () => {
     
     return (
         <View style={styles.mainContainer}>
-            {/* Botão de voltar */}
-            <TouchableOpacity 
-                style={styles.backButton} 
-                onPress={() => router.push("/profile")}
-            >
-                <Ionicons name="arrow-back" size={24} color="#1A2F5A" />
-            </TouchableOpacity>
             
             <ScrollView style={styles.container}>
-                <Text style={styles.championsSectionTitle}>CONHEÇA NOSSA EQUIPE</Text>
-                <Text style={styles.championsSectionSubtitle}>Somos 6 desenvolvedores e produtores de software, que trabalham juntos para criar o melhor site de futebol do Brasil.</Text>
+                <Text style={styles.title}>CONHEÇA NOSSA EQUIPE</Text>
+                <Text style={styles.subtitle}>Somos 6 desenvolvedores e produtores de software, que trabalham juntos para criar o melhor site de futebol do Brasil.</Text>
                 <View style={styles.dividerLine} />
                 <View style={styles.content}>
                     {teamMembers.map((member, index) => (
@@ -70,7 +63,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#DBDCDD',
-        paddingTop: 60, // Espaço para o botão de voltar
+        paddingTop: 30,
     },
     content: {
         padding: 24,
@@ -98,16 +91,15 @@ const styles = StyleSheet.create({
     info: {
         flex: 1,
     },
-    championsSectionTitle: {
+    title: {
         fontSize: 16,
-        marginTop: 10,
         marginBottom: 10,
         fontWeight: 'bold',
         color: '#25406A',
         textAlign: 'center',
         letterSpacing: 1,
     },
-    championsSectionSubtitle: {
+    subtitle: {
         fontSize: 12,
         fontWeight: 'bold',
         color: '#25406A',
