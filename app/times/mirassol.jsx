@@ -87,7 +87,7 @@ export default function Home() {
         </View>
 
         <View style={styles.infos}>
-          <Text style={styles.teamTitle}>Botafogo de Futebol e Regatas</Text>
+          <Text style={styles.teamTitle}>Mirassol Futebol Clube</Text>
           <View style={styles.trophies}>
             {trophyImages.map((img, idx) => (
               <Image
@@ -102,17 +102,19 @@ export default function Home() {
           <View style={styles.subtitles}>
             <Image
               source={{
-                uri: "https://botafogo.vtexassets.com/arquivos/ids/157244/BF0012NUTS99-1.png?v=638731649410030000",
+                uri: "https://raw.githubusercontent.com/giovannig10/The20BraziliansStars_MOBILE/3a7fb1678eeac54c2577279cc7ade7f8b8b546de/assets/img/shirts/camisa-mirassol.png",
               }}
               style={styles.logoImage}
             />
             <View style={styles.texts}>
-              <Text style={styles.subtitleText}>“Botafogo, Botafogo </Text>
-              <Text style={styles.subtitleText}>Campeão desde 1910”</Text>
+              <Text style={styles.subtitleText}>“O meu coração
+entra em campo
+ </Text>
+              <Text style={styles.subtitleText}>Com o Mirassol”</Text>
             </View>
             <Image
               source={{
-                uri: "https://images.tcdncom.br/img/img_prod/1092308/90_copia_camisa_botafogo_reebok_home_24_25_1034_1_1d0c6fbc85c0a327e154cb73f1fbab78.png",
+                uri: "https://raw.githubusercontent.com/giovannig10/The20BraziliansStars_MOBILE/3a7fb1678eeac54c2577279cc7ade7f8b8b546de/assets/img/shirts/camisa-mirassol2.png",
               }}
               style={styles.logoImage}
             />
@@ -165,8 +167,8 @@ export default function Home() {
           </View>
           <Text style={styles.stadiumLabel}>
             {stadiumIndex === 0 || stadiumIndex === 2
-              ? "Estádio Nilton Santos"
-              : "Estádio Nilton Santos"}
+              ? "Estádio Campos Maia"
+              : "Estádio Campos Maia"}
           </Text>
         </View>
       </View>
