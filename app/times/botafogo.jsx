@@ -806,7 +806,7 @@ const styles = StyleSheet.create({
     gap: 20,
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: 90,
+    marginLeft: 20,
   },
   goleirosContainer: {
     width: 100,
