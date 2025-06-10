@@ -74,7 +74,7 @@ export default function Home() {
               <View style={styles.secondColor} />
               <View style={styles.firstColor} />
               <View style={styles.secondColor} />
-          <View style={styles.shieldContaier}>
+          <View style={styles.shieldContanier}>
           </View>
         </View>
         <View style={styles.bannerDown}>
@@ -202,6 +202,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorGlDown}></View>
                 </View>
               </View>
             </View>
@@ -228,6 +229,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorGlDown}></View>
                 </View>
               </View>
             </View>
@@ -254,6 +256,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorGlDown}></View>
                 </View>
               </View>
             </View>
@@ -280,6 +283,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorGlDown}></View>
                 </View>
               </View>
             </View>
@@ -318,6 +322,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorZagDown}></View>
                 </View>
               </View>
             </View>
@@ -344,6 +349,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorZagDown}></View>
                 </View>
               </View>
             </View>
@@ -370,6 +376,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorZagDown}></View>
                 </View>
               </View>
             </View>
@@ -396,6 +403,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorZagDown}></View>
                 </View>
               </View>
             </View>
@@ -434,6 +442,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorMeiDown}></View>
                 </View>
               </View>
             </View>
@@ -460,6 +469,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorMeiDown}></View>
                 </View>
               </View>
             </View>
@@ -486,6 +496,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorMeiDown}></View>
                 </View>
               </View>
             </View>
@@ -512,6 +523,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorMeiDown}></View>
                 </View>
               </View>
             </View>
@@ -550,6 +562,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorCaDown}></View>
                 </View>
               </View>
             </View>
@@ -576,6 +589,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorCaDown}></View>
                 </View>
               </View>
             </View>
@@ -602,6 +616,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorCaDown}></View>
                 </View>
               </View>
             </View>
@@ -628,6 +643,7 @@ export default function Home() {
                     }}
                     style={styles.logoNacionalidade}
                   />
+                  <View style={styles.colorCaDown}></View>
                 </View>
               </View>
             </View>
@@ -877,17 +893,20 @@ const styles = StyleSheet.create({
   },
   cardPlayer: {
     width: 100,
-    height: 150,
+    height: 160,
     backgroundColor: "#25406A",
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
+    borderWidth: 7,
+    borderColor: "#1D2B43",
   },
   logoImagePlayer: {
     height: 60,
     width: 60,
     borderRadius: 10,
+    marginTop: 10,
   },
   textContainer: {
     alignItems: "center",
@@ -908,6 +927,38 @@ const styles = StyleSheet.create({
   logoNacionalidade: {
     width: 25,
     height: 15,
-    marginTop: 4,
+    marginTop: 10,
   },
+  colorGlDown: {
+    marginTop: 4,
+    width: 96,
+    height: 5,
+    backgroundColor: "#DE3D28",
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+},
+  colorZagDown: {
+    marginTop: 4,
+    width: 96,
+    height: 5,
+    backgroundColor: "#CD5F11",
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+},
+  colorMeiDown: {
+    marginTop: 4,
+    width: 96,
+    height: 5,
+    backgroundColor: "#31770E",
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+},
+  colorCaDown: {
+    marginTop: 4,
+    width: 96,
+    height: 5,
+    backgroundColor: "#28AADE",
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+},
 });
