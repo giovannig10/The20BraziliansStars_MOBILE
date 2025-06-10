@@ -75,12 +75,7 @@ export default function Contact() {
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.header}>
                     <View style={styles.headerTop}>
-                        <TouchableOpacity 
-                            style={styles.backButton}
-                            onPress={() => navigation.navigate('profile')}
-                        >
-                            <Ionicons name="arrow-back" size={24} color="#FFF" />
-                        </TouchableOpacity>
+                       
                         
                         <Image
                             source={require('../assets/img/logos/Logo.png')}

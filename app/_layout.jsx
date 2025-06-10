@@ -44,35 +44,22 @@ export default function Layout() {
                         ),
                     }}
                 />
-                <Drawer.Screen name="profile"
-                    options={{
-                        headerTitle: "", 
-                        drawerLabel: "Perfil",
-                        drawerIcon: ({ size, color }) => (
-                            <Ionicons name="person" size={size} color={color} />
-                        ),
-                    }}
-                />
                  <Drawer.Screen name="contact"
                     options={{
-                        headerShown: false,
                         headerTitle: "", 
                         drawerLabel: "Contato",
                         drawerIcon: ({ size, color }) => (
-                            <Ionicons name="person" size={size} color={color} />
+                            <Ionicons name="git-branch" size={size} color={color} />
                         ),
-                        drawerItemStyle: { display: 'none' },
                     }}
                 />
                 <Drawer.Screen name="developers"
                     options={{
-                        headerShown: false,
                         headerTitle: "", 
                         drawerLabel: "Membros",
                         drawerIcon: ({ size, color }) => (
-                            <Ionicons name="person" size={size} color={color} />
+                            <Ionicons name="people-sharp" size={size} color={color} />
                         ),
-                        drawerItemStyle: { display: 'none' },
                     }}
                 />
                 <Drawer.Screen name="botafogo"
