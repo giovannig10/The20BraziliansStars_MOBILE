@@ -83,7 +83,7 @@ export default function Home() {
         </View>
 
         <View style={styles.infos}>
-          <Text style={styles.teamTitle}>Botafogo de Futebol e Regatas</Text>
+          <Text style={styles.teamTitle}>Bahia</Text>
           <View style={styles.trophies}>
             {trophyImages.map((img, idx) => (
               <Image
@@ -98,12 +98,12 @@ export default function Home() {
           <View style={styles.subtitles}>
             <Image
               source={{
-                uri: "https://dw0jruhdg6fis.cloudfront.net/producao/19128180/G/bahia_88.png",
+                uri: "https://tuttisports.com.br/cdn/shop/files/Camisa-reserva-do-Bahia-2025-2026-PUMA-1-1920x1920-Photoroom_1024x.png?v=1747426258",
               }}
               style={styles.logoImage}
             />
             <View style={styles.texts}>
-              <Text style={styles.subtitleText}>“Somos da turma tricolor </Text>
+              <Text style={styles.subtitleText}>“Somos da Bahia </Text>
               <Text style={styles.subtitleText}>Somos a voz do campeão”</Text>
             </View>
             <Image
