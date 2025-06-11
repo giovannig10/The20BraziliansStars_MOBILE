@@ -18,6 +18,9 @@ const trophyImages = [
   {
     uri: "https://images.tcdn.com.br/img/img_prod/1092308/90_trofeu_oficial_completa_da_libertadores_atualizado_2023_129_1_8b5f1be1ade56fddf957caaccb212bd5.png",
   },
+  {
+    uri: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh085Bkfrk8SF_jRVLO5Fa_wy3mS7dTb_9xMB6Ppct6R80nIB7zFJn1VKAvS_6ildasj-1XwUZbT5xMRt23wcyq3v9h3nEHhzvruRdsrelGt6DPHwWb2uDaWzXTss8OlA5Rhe57YcIeZtc/s1600/trof%25C3%25A9u.png"
+  }
 ];
 
 const stadiumImages = [
