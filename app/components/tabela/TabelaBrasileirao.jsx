@@ -15,7 +15,7 @@ export default function TabelaBrasileirao() {
     fetch("https://tbs-back.coolify.fps92.dev/teams")
       .then((res) => res.json())
       .then((data) => {
-        console.log("Resposta da API:", data); // Veja os campos no console
+
         if (Array.isArray(data)) {
           setTabela(data);
         } else {
