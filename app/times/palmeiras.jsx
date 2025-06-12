@@ -122,16 +122,7 @@ export default function Home() {
           </View>
         </View>
 
-        <View style={styles.winRateContainer}>
-          <Text style={styles.sectionTitle}>Retrospecto Recente</Text>
-          <View style={styles.winRate}>
-            {["V", "D", "V", "V", "V"].map((res, idx) => (
-              <Text key={idx} style={res === "V" ? styles.win : styles.defeat}>
-                {res}
-              </Text>
-            ))}
-          </View>
-        </View>
+ 
 
         <View style={styles.stadiumContainer}>
           <Text style={styles.sectionTitle}>Estádio</Text>
