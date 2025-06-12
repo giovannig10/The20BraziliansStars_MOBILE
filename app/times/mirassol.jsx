@@ -241,7 +241,7 @@ entra em campo
               <View style={styles.cardPlayer}>
                 <Image
                   source={{
-                    uri: "https://www.mirassolfc.com.br/assets/uploads/elenco/thumb_397b710d6acacb40c63ee851dcb121ac.jpeg",
+                    uri: "https://raw.githubusercontent.com/giovannig10/The20BraziliansStars_MOBILE/15c988247dcb03a282fba59c8857f6e5a72bba93/assets/img/players/walter.png",
                   }}
                   style={styles.logoImagePlayer}
                 />
